@@ -16,8 +16,13 @@ const defaultNFT: NFT = {
     tokenUri: "",
     createdAt: new Date()
 };
+
+interface NFTState {
+    nft: NFT,
+    setNft: (by: NFT) => void
+}
 // Create the store with persistence
-const useNFTStore = create()(
+const useNFTStore = create<NFTState>()(
     persist(
         (set) => ({
             nft: defaultNFT,

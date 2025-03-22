@@ -55,6 +55,7 @@ const useProps = (): Props => {
 
   useEffect(() => {
     const provider = getProvider();
+    console.log("provider", provider);
     if (provider) {
       setPhantomProvider(provider);
     }
@@ -319,8 +320,24 @@ const useProps = (): Props => {
   ]);
 
   const setWallet = (wallet: Phantom | null) => {
+    console.log("set wallet", wallet);
+
+
     if (!wallet) {
-      setPhantomProvider(wallet);
+      // const walletPhantomProvider: PhantomProvider = {
+      //   publicKey: null,
+      //   isConnected: null,
+      //   signAndSendTransaction: wallet.solana.signAndSendTransaction,
+      //   signTransaction: wallet.solana.signTransaction,
+      //   signAllTransactions: wallet.solana.signAllTransactions,
+      //   signMessage: wallet.solana.signMessage,
+      //   connect: wallet.solana.connect,
+      //   disconnect: wallet.solana.disconnect,
+      //   on: () => {
+      //   },
+      //   request: async () => { }
+      // }
+      setPhantomProvider(wallet.solana);
     }
   };
 

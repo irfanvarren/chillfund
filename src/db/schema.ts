@@ -5,10 +5,10 @@ import { relations } from "drizzle-orm";
 // NFT table definition
 export const nfts = pgTable("nfts", {
     id: serial("id").primaryKey(),
-    name: varchar("name", { length: 256 }).notNull().default("CF"),
-    price: doublePrecision("price").notNull().default(0),
-    stock: integer("stock").notNull().default(0),
-    description: text("description").notNull().default(""),
+    name: varchar("name", { length: 256 }).notNull(),
+    price: doublePrecision("price").notNull(),
+    stock: integer("stock").notNull(),
+    description: text("description").notNull(),
     tokenId: varchar("token_id", { length: 256 }).notNull().unique(),
     owner: varchar("owner", { length: 256 }).notNull(),
     metadataUri: text("metadata_uri").notNull(),

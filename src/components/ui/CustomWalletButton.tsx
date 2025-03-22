@@ -9,7 +9,7 @@ import { TokenBalanceDisplay } from '@/components/ui/TokenBalance';
 
 
 const CustomWalletButton: React.FC = () => {
-  const { publicKey, handleConnect: windowHandleConnect, isConnected: isWindowConnected } = useWalletProps();
+  const { publicKey, handleConnect: windowHandleConnect, isConnected: isWindowConnected, setWallet: windowSetWallet } = useWalletProps();
   const { disconnect, connected, connecting } = useWallet();
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const [phantomWallet, setPhantomWallet] = useState<Phantom | null>(null);
@@ -22,6 +22,8 @@ const CustomWalletButton: React.FC = () => {
     }
     const initPhantom = async () => {
       try {
+        console.log(isWindowConnected);
+        console.log(phantomWallet);
         if (!isWindowConnected) {
           if (phantomWallet) {
             const walletConnect = await phantomWallet?.solana.connect();
@@ -32,7 +34,9 @@ const CustomWalletButton: React.FC = () => {
               element: "phantom-wallet-container",
               namespace: "chillfund",
             });
+            console.log(phantom);
             setPhantomWallet(phantom);
+            windowSetWallet(phantom)
           }
         }
       } catch (error) {

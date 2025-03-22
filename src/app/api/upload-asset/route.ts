@@ -10,8 +10,8 @@ import { createGenericFile, dateTime, generateSigner, sol, some, transactionBuil
 import { TransactionError } from '@metaplex-foundation/umi';
 import { base58 } from '@metaplex-foundation/umi/serializers';
 import { createNFT } from '@/db/queries';
-import { NewNFT } from '@/db/schema';
 import { initializeUmi } from '@/lib/utils/umi';
+import { NewNFT } from '@/db/schema';
 
 export async function POST(request: NextRequest) {
     try {
